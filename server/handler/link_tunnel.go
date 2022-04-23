@@ -31,6 +31,7 @@ func HttpAddHeader(w http.ResponseWriter, key string, value string) {
 	w.Header()[key] = append(w.Header()[key], value)
 }
 
+// LinkTunnel 这个是tcp相关的流量加密
 func LinkTunnel(w http.ResponseWriter, r *http.Request) {
 	// TODO 调试信息输出
 	// hd, _ := httputil.DumpRequest(r, true)

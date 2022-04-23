@@ -46,6 +46,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 func authMiddleware(next http.Handler) http.Handler {
 	fn := func(w http.ResponseWriter, r *http.Request) {
+		// 跨域设置
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
 		w.Header().Set("Access-Control-Allow-Headers", "*")
@@ -58,15 +59,17 @@ func authMiddleware(next http.Handler) http.Handler {
 		// fmt.Println("bb", r.URL.Path, name)
 		if utils.InArrStr([]string{"login", "index", "static", "debug"}, name) {
 			// 不进行鉴权
+			// 白名单路由
 			next.ServeHTTP(w, r)
 			return
 		}
 
-		// 进行登陆鉴权
+		// 进行登陆鉴权 （从header、post表单中）
 		jwtToken := r.Header.Get("Jwt")
 		if jwtToken == "" {
 			jwtToken = r.FormValue("jwt")
 		}
+		// jwt 解析
 		data, err := GetJwtData(jwtToken)
 		if err != nil || base.Cfg.AdminUser != fmt.Sprint(data["admin_user"]) {
 			w.WriteHeader(http.StatusUnauthorized)

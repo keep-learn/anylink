@@ -26,8 +26,10 @@ admin_pass = "$2a$10$UQ7C.EoPifDeJh6d8.31TeSPQU7hM/NOM2nixmBucJpAuXDQNqNke"
 jwt_secret = "abcdef.0123456789.abcdef"
 
 
+# tcp的
 #服务监听地址
 server_addr = ":443"
+# udp的
 #开启 DTLS, 默认关闭
 server_dtls = false
 server_dtls_addr = ":4433"

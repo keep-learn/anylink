@@ -15,6 +15,7 @@ import (
 	"github.com/pion/logging"
 )
 
+// 备注：DTLS 是对udp进行加密的；TLS 是对tcp进行加密的
 // 因本项目对 github.com/pion/dtls 的代码，进行了大量的修改
 // 且短时间内无法合并到上游项目
 // 所以本项目暂时copy了一份代码

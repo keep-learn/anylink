@@ -109,6 +109,7 @@ func getAbsPath(base, cfile string) string {
 	return filepath.Join(base, cfile)
 }
 
+// 将配置文件的值映射到 Cfg 结构体上
 func initCfg() {
 	ref := reflect.ValueOf(Cfg)
 	s := ref.Elem()

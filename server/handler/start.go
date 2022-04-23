@@ -34,8 +34,13 @@ func Start() {
 	ha := sha1.Sum(b)
 	profileHash = hex.EncodeToString(ha[:])
 
+	// 主要是后端管理系统的一些路由
 	go admin.StartAdmin()
+
+	// 这个是tcp版本的加密
 	go startTls()
+
+	// 这个是udp版本的加密
 	go startDtls()
 }
 

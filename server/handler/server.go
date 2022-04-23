@@ -50,7 +50,8 @@ func startTls() {
 		// InsecureSkipVerify: true,
 	}
 	srv := &http.Server{
-		Addr:      addr,
+		Addr: addr,
+		// 这个是相关的路由
 		Handler:   initRoute(),
 		TLSConfig: tlsConfig,
 		ErrorLog:  base.GetBaseLog(),
